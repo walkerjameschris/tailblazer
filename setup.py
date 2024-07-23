@@ -6,7 +6,7 @@ setup(
     description='Cumulative rank and tail metric algorithims',
     url='http://github.com/walkerjameschris/tailblazer',
     author='Chris Walker',
-    author_email='walkerjameschros@gmail.com',
+    author_email='walkerjameschris@gmail.com',
     license='MIT',
     packages=['tailblazer'],
     install_requires=['numpy'],

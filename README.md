@@ -7,5 +7,8 @@ import tailblazer as tbzr
 import numpy as np
 
 x = np.array([1, 2, 3, 4, 5, 6])
-tbzr.cume_tail_mean(x)
+tbzr.cume_tail_mean(x, tail=0.7)
+
+# Output
+>>> array([1. , 1.5, 2. , 2.5, 3. , 3.5])
 ```

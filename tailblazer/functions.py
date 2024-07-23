@@ -62,7 +62,7 @@ def cume_tail_mean_1d(x: NDArray, tail: float=0.95) -> NDArray:
         n_tail += 1
         curr_tail = tail * pcts_vec[i]
 
-        while x[indices[tail_floor]] < curr_tail:
+        while pcts_vec[indices[tail_floor]] < curr_tail:
             n_tail -= 1
             tail_sum -= x[indices[tail_floor]]
             tail_floor += 1
