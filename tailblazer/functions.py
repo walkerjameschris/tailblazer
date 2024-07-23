@@ -92,7 +92,7 @@ def apply_multidim(x: NDArray, axis: int, target_fun: callable) -> NDArray:
 
     return target_fun(x)
 
-def pct_rank(x: NDArray, axis=0):
+def pct_rank(x: NDArray, axis: int=0) -> NDArray:
     '''
     Computes cumulative distribution over a NumPy
     array of up to two dimensions. This works for
@@ -104,7 +104,7 @@ def pct_rank(x: NDArray, axis=0):
 
     return apply_multidim(x, axis, pct_rank_1d)
 
-def cume_tail_mean(x: NDArray, axis=0, tail: float=0.95):
+def cume_tail_mean(x: NDArray, axis=0, tail: float=0.95) -> NDArray:
     '''
     Computes cumulative tail menas over a NumPy
     array of up to two dimensions. This works for
