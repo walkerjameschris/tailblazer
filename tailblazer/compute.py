@@ -2,6 +2,8 @@
 import numpy as np
 from numpy.typing import NDArray
 
+#### Core Mechanics in 1D ####
+
 def pct_rank_1d(x: NDArray) -> NDArray:
     '''
     Internal implementation of cumulative
@@ -71,6 +73,8 @@ def cume_tail_mean_1d(x: NDArray, tail: float=0.95) -> NDArray:
 
     return mean_vec
 
+#### Internal Helper ####
+
 def apply_multidim(x: NDArray, axis: int, target_fun: callable) -> NDArray:
     '''
     An internal helper function designed to make
@@ -79,11 +83,23 @@ def apply_multidim(x: NDArray, axis: int, target_fun: callable) -> NDArray:
     handling.
     '''
 
+    try:
+        x = np.array(x, dtype=float)
+    except:
+        raise TypeError('`x` must be an array or coercible to an array')
+
+    if np.isnan(x).any():
+        # NOTE: Consider adding support for nan values later
+        raise ValueError('`x` cannot contain nan values')
+
+    if axis not in (0, 1):
+        raise ValueError('`axis` must be 0 or 1')
+
     n_dim = len(x.shape)
     transpose = n_dim == 2 and axis == 0
 
     if n_dim >= 3:
-        raise ValueError('Only 0, 1, and 2D arrays are supported')
+        raise ValueError('Only 1, and 2D arrays are supported')
 
     flip = lambda x: x.T if transpose else x
 
@@ -91,6 +107,8 @@ def apply_multidim(x: NDArray, axis: int, target_fun: callable) -> NDArray:
         return flip(np.array([target_fun(i) for i in flip(x)]))
 
     return target_fun(x)
+
+#### Exported Algorithms ####
 
 def pct_rank(x: NDArray, axis: int=0) -> NDArray:
     '''
