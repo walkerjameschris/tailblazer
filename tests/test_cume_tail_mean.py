@@ -51,7 +51,7 @@ def test_weird_objects():
     'Ensures we must have a valid numeric array'
 
     with pytest.raises(TypeError):
-        tbzr.cume_tail_mean(weird_data)
+        tbzr.cume_tail_mean(weird_data) # type: ignore
 
 def test_2d_object():
     'Tests operating on different axes'
@@ -63,10 +63,10 @@ def test_3d_objects():
     'Tests halting on 3D+ arrays'
 
     with pytest.raises(ValueError):
-        tbzr.cume_tail_mean(three_dim_arr)
+        tbzr.cume_tail_mean(three_dim_arr) # type: ignore
 
 def test_werid_axis():
     'Tests halting on invalid axis'
 
     with pytest.raises(ValueError):
-        tbzr.cume_tail_mean(x, axis=0.5)
+        tbzr.cume_tail_mean(x, axis=0.5) # type: ignore

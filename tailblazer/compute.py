@@ -5,7 +5,7 @@ from typing import Callable
 
 #### Core Mechanics in 1D ####
 
-def pct_rank_1d(x: NDArray) -> NDArray:
+def pct_rank_1d(x: NDArray, indices: NDArray) -> NDArray:
     '''
     Internal implementation of cumulative
     distribution over a 1D NumPy array. This
@@ -17,7 +17,6 @@ def pct_rank_1d(x: NDArray) -> NDArray:
     if len(x.shape) != 1:
         raise ValueError('Only 1D arrays are supported')
 
-    indices = np.argsort(x)
     last_pct = None
     last_val = None
     pcts_vec = np.empty(x.shape)
@@ -53,7 +52,7 @@ def cume_tail_mean_1d(x: NDArray, tail: float=0.95) -> NDArray:
         raise ValueError('`tail` must be between 0.01 and 0.99')
 
     indices = np.argsort(x)
-    pcts_vec = pct_rank(x)
+    pcts_vec = pct_rank_1d(x, indices)
     tail_floor = 0
     mean_vec = np.empty(x.shape)
     tail_sum = 0
@@ -121,7 +120,7 @@ def pct_rank(x: NDArray, axis: int=0) -> NDArray:
     axis: The axis (0 or 1) to operate over
     '''
 
-    return apply_multidim(x, axis, pct_rank_1d)
+    return apply_multidim(x, axis, lambda x: pct_rank_1d(x, np.argsort(x)))
 
 def cume_tail_mean(x: NDArray, axis: int=0, tail: float=0.95) -> NDArray:
     '''

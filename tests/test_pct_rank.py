@@ -51,7 +51,7 @@ def test_weird_objects():
     'Ensures we must have a valid numeric array'
 
     with pytest.raises(TypeError):
-        tbzr.pct_rank(weird_data)
+        tbzr.pct_rank(weird_data) # type: ignore
 
 def test_2d_object():
     'Tests operating on different axes'
@@ -63,10 +63,10 @@ def test_3d_objects():
     'Tests halting on 3D+ arrays'
 
     with pytest.raises(ValueError):
-        tbzr.pct_rank(three_dim_arr)
+        tbzr.pct_rank(three_dim_arr) # type: ignore
 
 def test_werid_axis():
     'Tests halting on invalid axis'
 
     with pytest.raises(ValueError):
-        tbzr.pct_rank(x, axis=0.5)
+        tbzr.pct_rank(x, axis=0.5) # type: ignore
