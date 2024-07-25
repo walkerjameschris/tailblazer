@@ -1,4 +1,4 @@
-## tailblazer <img src="img/logo.png" align="right"height="138"/>
+## tailblazer <img src="img/logo.png" align="right" height="138">
 
 A Python package containing several useful functions for working
 with the tails of a distribution. This is a natural extension to
