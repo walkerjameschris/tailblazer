@@ -1,3 +1,4 @@
 build/*
 tailblazer.egg-info/*
 .pytest_cache/*
+dist/*

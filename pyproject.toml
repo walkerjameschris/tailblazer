@@ -1,0 +1,21 @@
+[project]
+name = "tailblazer"
+version = "0.0.1"
+authors = [
+  { name="Chris Walker", email="walkerjameschris@gmail.com" },
+]
+description = "A collection of NumPy compatible algorithms for working with the tails of distributions."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+  "numpy"
+]
+
+[project.urls]
+Homepage = "https://github.com/pypa/sampleproject"
+Issues = "https://github.com/pypa/sampleproject/issues"
