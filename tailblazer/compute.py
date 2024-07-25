@@ -1,6 +1,7 @@
 
 import numpy as np
 from numpy.typing import NDArray
+from typing import Callable
 
 #### Core Mechanics in 1D ####
 
@@ -75,7 +76,7 @@ def cume_tail_mean_1d(x: NDArray, tail: float=0.95) -> NDArray:
 
 #### Internal Helper ####
 
-def apply_multidim(x: NDArray, axis: int, target_fun: callable) -> NDArray:
+def apply_multidim(x: NDArray, axis: int, target_fun: Callable) -> NDArray:
     '''
     An internal helper function designed to make
     applying algorithims on multidimensional
@@ -122,7 +123,7 @@ def pct_rank(x: NDArray, axis: int=0) -> NDArray:
 
     return apply_multidim(x, axis, pct_rank_1d)
 
-def cume_tail_mean(x: NDArray, axis=0, tail: float=0.95) -> NDArray:
+def cume_tail_mean(x: NDArray, axis: int=0, tail: float=0.95) -> NDArray:
     '''
     Computes cumulative tail menas over a NumPy
     array of up to two dimensions. This works for
